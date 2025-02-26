@@ -63,3 +63,27 @@ describe('Validator.join', () => {
     expect(errors).toBeNull()
   });
 });
+
+describe('Validator.greaterThan', () => {
+  it('should return null with text greater than min size', () => {
+    const error = Validator.greaterThan('testando', 5, errorMsg)
+    expect(error).toBeNull()
+  });
+
+  it('should return error with text greater than max size', () => {
+    const error = Validator.greaterThan('foo', 5, errorMsg)
+    expect(error).toBe(errorMsg)
+  });
+});
+
+describe('Validator.regex', () => {
+  it('should return null with text match with regex', () => {
+    const error = Validator.regex('testando', /^[a-zA-ZÀ-ú'-\.\s]+$/, errorMsg)
+    expect(error).toBeNull()
+  });
+
+  it('should return error with text greater than max size', () => {
+    const error = Validator.regex('foo@123', /^[a-zA-ZÀ-ú'-\.\s]+$/, errorMsg)
+    expect(error).toBe(errorMsg)
+  });
+});

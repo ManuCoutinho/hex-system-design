@@ -14,8 +14,16 @@ export default class Validator {
     return value!.trim() !== '' ? null : error
   }
 
-  static lessThan(value: string | any[], length: number, error: string) {
+  static lessThan(value: string | any[], length: number, error: string): string | null {
     return value.length < length ? null : error
+  }
+
+  static greaterThan(value: string | any[], minLength: number, error: string): string | null {
+    return value.length > minLength ? null : error
+  }
+
+  static regex(valor: string, regex: RegExp, error: string): string | null {
+    return regex.test(valor) ? null : error
   }
 
   static isEmailValid(email: string): boolean {
