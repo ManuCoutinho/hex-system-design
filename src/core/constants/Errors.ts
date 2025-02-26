@@ -1,0 +1,4 @@
+export default {
+  PASSWORD_INVALID: 'PASSWORD_INVALID',
+  EMPTY_NAME: 'EMPTY_NAME'
+} as const
