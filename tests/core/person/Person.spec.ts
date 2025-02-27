@@ -1,13 +1,15 @@
 import Errors from "@/core/constants/Errors";
 import Person from "@/core/person/Person";
 import Id from "@/core/shared/Id";
+import PersonBuilder from "@/tests/data/PersonBuilder";
 
 describe('Person class', () => {
   it('should throw an error when create a person with empty name', () => {
     expect(() => new Person({ name: '', cpf: '' })).toThrow(Errors.EMPTY_NAME)
   });
   it('should create a valid person object', () => {
-    const person = new Person({ name: 'Jane Doe', cpf: '255.307.850-18' })
+    const person = PersonBuilder.create().build()
+    // const person = new Person({ name: 'Jane Doe', cpf: '255.307.850-18' })
     expect(person.name.lastName).toBe('Doe')
     expect(person.id.new).toBeTruthy()
   });
