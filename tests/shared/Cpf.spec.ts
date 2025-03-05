@@ -1,5 +1,6 @@
 import Errors from "@/core/constants/Errors";
 import Cpf from "@/core/shared/Cpf";
+import CpfRegion from "@/core/shared/CpfRegion";
 
 describe('CPF class', () => {
   it('should return invalid cpf (false) for empty string', () => {
@@ -54,5 +55,11 @@ describe('CPF class', () => {
     expect(new Cpf('34688565046').value).toBe('34688565046')
     expect(new Cpf('028.777.810-03').value).toBe('02877781003')
     expect(new Cpf('088.535.530-06').value).toBe('08853553006')
+  });
+  it('should return a cpf region', () => {
+    expect(new Cpf('28001238938').region).toBe(CpfRegion.PR_SC)
+    expect(new Cpf('34688565046').region).toBe(CpfRegion.RS)
+    expect(new Cpf('028.777.810-03').region).toBe(CpfRegion.RS)
+    expect(new Cpf('088.535.530-06').region).toBe(CpfRegion.RS)
   });
 });

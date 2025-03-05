@@ -1,4 +1,5 @@
 import Errors from "../constants/Errors"
+import CpfRegion from "./CpfRegion"
 
 export default class Cpf {
   readonly value: string
@@ -14,6 +15,10 @@ export default class Cpf {
 
   get formatted() {
     return this.value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4')
+  }
+
+  get region(): CpfRegion {
+    return CpfRegion.byCpf(this.value)
   }
 
   static isValid(cpf: string): boolean {
