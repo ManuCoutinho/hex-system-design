@@ -15,6 +15,38 @@ export default class PersonBuilder {
     })
   }
 
+  static createMany(qty: number = 10) {
+    return Array(qty).fill(0).map(() => {
+      return PersonBuilder.create().build()
+    })
+  }
+
+  whitName(name: string): PersonBuilder {
+    this.props.name = name
+    return this
+  }
+  withoutName(): PersonBuilder {
+    this.props.name = undefined
+    return this
+  }
+
+  withoutId(): PersonBuilder {
+    this.props.id = undefined
+    return this
+  }
+  withId(id: string): PersonBuilder {
+    this.props.id = id
+    return this
+  }
+
+  withoutCpf(): PersonBuilder {
+    this.props.cpf = undefined
+    return this
+  }
+  withCpf(cpf: string): PersonBuilder {
+    this.props.cpf = cpf
+    return this
+  }
   build(): Person {
     return new Person(this.props)
   }
